@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "aks-bc-003"
+		},
+		"ls_backend_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_backend'"
+		},
+		"ls_raw_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_raw'"
+		},
+		"ls_backend_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://std5.dfs.core.windows.net/"
+		},
+		"ls_raw_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://std5.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "aks-bc-003_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_backend_accountKey": {
+						"value": "[parameters('ls_backend_accountKey')]"
+					},
+					"ls_raw_accountKey": {
+						"value": "[parameters('ls_raw_accountKey')]"
+					},
+					"ls_backend_properties_typeProperties_url": {
+						"value": "[parameters('ls_backend_properties_typeProperties_url')]"
+					},
+					"ls_raw_properties_typeProperties_url": {
+						"value": "[parameters('ls_raw_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
