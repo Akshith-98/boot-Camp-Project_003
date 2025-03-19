@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "aks-synapse"
+		},
+		"aks-synapse-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:aks-synapse.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"ls_backend_accountKey": {
+			"value": ""
+		},
+		"ls_raw_accountKey": {
+			"value": ""
+		},
+		"aks-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net"
+		},
+		"ls_backend_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net/"
+		},
+		"ls_raw_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net/"
+		}
+	}
+}
