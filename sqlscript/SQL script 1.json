@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE OnlineTransactions (\n    OrderID INT,\n    CustomerID INT,\n    ProductID INT,\n    DateTime DATETIME,\n    PaymentMethod VARCHAR(50),\n    Amount DECIMAL(10, 2),\n    Status VARCHAR(20)\n);\n\nCREATE TABLE InStoreTransactions (\n    TransactionID INT,\n    CustomerID INT,\n    StoreID INT,\n    DateTime DATETIME,\n    Amount DECIMAL(10, 2),\n    PaymentMethod VARCHAR(50)\n);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
