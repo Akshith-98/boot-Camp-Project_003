@@ -1,5 +1,5 @@
 {
-	"name": "ds_syn_OnlineTransactions",
+	"name": "ds_syn_LoyaltyAccounts",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_syn_dedi",
@@ -9,7 +9,7 @@
 		"type": "AzureSqlDWTable",
 		"schema": [
 			{
-				"name": "OrderID",
+				"name": "LoyaltyID",
 				"type": "int",
 				"precision": 10
 			},
@@ -19,34 +19,22 @@
 				"precision": 10
 			},
 			{
-				"name": "ProductID",
+				"name": "PointsEarned",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "DateTime",
-				"type": "datetime",
-				"precision": 23,
-				"scale": 3
-			},
-			{
-				"name": "PaymentMethod",
+				"name": "TierLevel",
 				"type": "varchar"
 			},
 			{
-				"name": "Amount",
-				"type": "decimal",
-				"precision": 10,
-				"scale": 2
-			},
-			{
-				"name": "Status",
-				"type": "varchar"
+				"name": "JoinDate",
+				"type": "date"
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "OnlineTransactions"
+			"table": "LoyaltyAccounts"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

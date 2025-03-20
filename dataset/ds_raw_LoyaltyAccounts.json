@@ -1,5 +1,5 @@
 {
-	"name": "ds_raw_InStoreTransactions",
+	"name": "ds_raw_LoyaltyAccounts",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_raw",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "InStoreTransactions.csv",
+				"fileName": "LoyaltyAccounts.csv",
 				"fileSystem": "raw"
 			},
 			"columnDelimiter": ",",
@@ -20,7 +20,7 @@
 		},
 		"schema": [
 			{
-				"name": "TransactionID",
+				"name": "LoyaltyID",
 				"type": "String"
 			},
 			{
@@ -28,19 +28,15 @@
 				"type": "String"
 			},
 			{
-				"name": "StoreID",
+				"name": "PointsEarned",
 				"type": "String"
 			},
 			{
-				"name": "DateTime",
+				"name": "TierLevel",
 				"type": "String"
 			},
 			{
-				"name": "Amount",
-				"type": "String"
-			},
-			{
-				"name": "PaymentMethod",
+				"name": "JoinDate",
 				"type": "String"
 			}
 		]

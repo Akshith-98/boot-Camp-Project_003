@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Backend-Raw",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -60,8 +60,300 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Raw-OnlineTransactions",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Backend-Raw",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OrderID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OrderID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProductID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DateTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DateTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentMethod",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Amount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Amount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_raw_OnlineTransactions",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_syn_OnlineTransactions",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Raw-InStoreTransactions",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Backend-Raw",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TransactionID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransactionID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CustomerID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "StoreID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "StoreID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DateTime",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DateTime",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Amount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Amount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethod",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PaymentMethod",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_raw_InStoreTransactions",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_syn_InStoreTransactions",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Raw-LoyaltyAccounts",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Backend-Raw",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_raw_LoyaltyAccounts",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_syn_LoyaltyAccounts",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2025-03-20T01:20:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
