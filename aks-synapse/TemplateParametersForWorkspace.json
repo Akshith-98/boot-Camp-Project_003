@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "aks-synapse"
+		},
+		"aks-synapse-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:aks-synapse.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"ls_backend_accountKey": {
+			"value": ""
+		},
+		"ls_raw_accountKey": {
+			"value": ""
+		},
+		"ls_syn_dedi_password": {
+			"value": ""
+		},
+		"ls_synapse_dedi_password": {
+			"value": ""
+		},
+		"aks-synapse-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net"
+		},
+		"ls_backend_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net/"
+		},
+		"ls_raw_properties_typeProperties_url": {
+			"value": "https://std5.dfs.core.windows.net/"
+		},
+		"ls_syn_dedi_properties_typeProperties_server": {
+			"value": "aks-synapse.sql.azuresynapse.net"
+		},
+		"ls_syn_dedi_properties_typeProperties_database": {
+			"value": "aksstagging"
+		},
+		"ls_syn_dedi_properties_typeProperties_userName": {
+			"value": "Aditya-98"
+		},
+		"ls_synapse_dedi_properties_typeProperties_server": {
+			"value": "aks-synapse.sql.azuresynapse.net"
+		},
+		"ls_synapse_dedi_properties_typeProperties_database": {
+			"value": "aksstagging"
+		},
+		"ls_synapse_dedi_properties_typeProperties_userName": {
+			"value": "Aditya-98"
+		}
+	}
+}
