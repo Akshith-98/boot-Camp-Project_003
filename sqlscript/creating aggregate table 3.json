@@ -1,0 +1,17 @@
+{
+	"name": "creating aggregate table 3",
+	"properties": {
+		"content": {
+			"query": "INSERT INTO PeakActivityAnalysis\nSELECT \n    'Online' AS TransactionType,\n    DATENAME(WEEKDAY, DateTime) AS DayOfWeek,\n    DATEPART(HOUR, DateTime) AS HourOfDay,\n    COUNT(*) AS TransactionCount\nFROM OnlineTransactions\nWHERE DateTime IS NOT NULL  -- Null value cleanup\nGROUP BY DATENAME(WEEKDAY, DateTime), DATEPART(HOUR, DateTime)\n\nUNION ALL\n\nSELECT \n    'In-Store' AS TransactionType,\n    DATENAME(WEEKDAY, DateTime) AS DayOfWeek,\n    DATEPART(HOUR, DateTime) AS HourOfDay,\n    COUNT(*) AS TransactionCount\nFROM InStoreTransactions\nWHERE DateTime IS NOT NULL  -- Null value cleanup\nGROUP BY DATENAME(WEEKDAY, DateTime), DATEPART(HOUR, DateTime);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

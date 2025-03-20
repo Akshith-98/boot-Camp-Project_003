@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 5",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE PeakActivityAnalysis (\n    TransactionType VARCHAR(20),  -- 'Online' or 'In-Store'\n    DayOfWeek VARCHAR(20),\n    HourOfDay INT,\n    TransactionCount INT\n);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

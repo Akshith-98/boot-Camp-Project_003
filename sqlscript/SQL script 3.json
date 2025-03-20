@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [LoyaltyID]\n,[CustomerID]\n,[PointsEarned]\n,[TierLevel]\n,[JoinDate]\n FROM [dbo].[LoyaltyAccounts]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

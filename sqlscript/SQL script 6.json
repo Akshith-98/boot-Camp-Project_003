@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 6",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [TransactionID]\n,[CustomerID]\n,[StoreID]\n,[DateTime]\n,[Amount]\n,[PaymentMethod]\n FROM [dbo].[InStoreTransactions]\n ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

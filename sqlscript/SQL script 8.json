@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 8",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [TransactionType]\n,[DayOfWeek]\n,[HourOfDay]\n,[TransactionCount]\n FROM [dbo].[PeakActivityAnalysis]\n\n SELECT \n    TransactionType,\n    DayOfWeek,\n    HourOfDay,\n    TransactionCount\nFROM PeakActivityAnalysis\nORDER BY TransactionCount DESC;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "aksstagging",
+				"poolName": "aksstagging"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
